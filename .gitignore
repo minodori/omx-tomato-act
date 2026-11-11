@@ -1,0 +1,22 @@
+# 기본은 전부 무시하고, 아래에서 올릴 것만 허용한다 (실수로 올리는 것 방지)
+*
+
+!.gitignore
+!README.md
+!LICENSE
+
+!scripts/
+!scripts/omx_*.sh
+!scripts/omx_*.py
+!scripts/hf_push_dataset.py
+!scripts/act_colab.ipynb
+
+!docs/
+!docs/**
+
+# 위 허용 규칙보다 뒤에 둬야 우선한다
+# 초기 시험용(카메라 번호가 박혀 있음)이라 뺀다
+scripts/omx_teleop_rec.sh
+.sessions/
+__pycache__/
+*.pyc

@@ -1,0 +1,9 @@
+# /etc/udev/rules.d/99-omx.rules 예시. 보드마다 시리얼이 달라서 직접 채워야 한다.
+# 이 이름(/dev/omx_follower, /dev/omx_leader)을 scripts/ 의 스크립트가 쓴다.
+#
+# 시리얼 확인:  udevadm info -a -n /dev/ttyACM0 | grep -E "idVendor|serial"
+# 적용:         sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# 우리 보드의 idVendor 는 2f5d 였다 (ROBOTIS 문서의 0403 이 아니었다). 본인 보드 값을 쓴다.
+SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{serial}=="<FOLLOWER_SERIAL>", SYMLINK+="omx_follower"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="2f5d", ATTRS{serial}=="<LEADER_SERIAL>", SYMLINK+="omx_leader"
